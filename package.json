@@ -3,7 +3,7 @@
   "scripts": {
     "build": "preact build --dest docs",
     "serve": "sirv build --port 8080 --cors --single",
-    "dev": "preact watch",
+    "start": "preact watch",
     "lint": "eslint src"
   },
   "eslintConfig": {

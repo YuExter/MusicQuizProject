@@ -4,4 +4,5 @@ export default function(config) {
     loader: 'file-loader',
   });
   config.resolve.extensions.push('.slim');
+  config.output.publicPath = '';
 }

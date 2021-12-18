@@ -16,7 +16,7 @@
     "eslint": "^6.0.1",
     "eslint-config-preact": "^1.1.0",
     "file-loader": "^6.2.0",
-    "preact-cli": "^3.0.0",
+    "preact-cli": "^3.3.3",
     "sirv-cli": "1.0.3"
   },
   "dependencies": {

@@ -42,7 +42,7 @@ export function Application() {
 
   return (
     <AppWrapper id="app">
-      <Audio audio={currentQuest.audio} />
+      <Audio audio={currentQuest.audio} key={currentQuest.audio} />
 
       <List currentQuest={currentQuest} answer={answer} onAnswer={setAnswer} />
 

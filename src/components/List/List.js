@@ -12,8 +12,8 @@ export function List({ currentQuest, answer, onAnswer }) {
         <li key={item.id} className={classNames('list-group-item', {
           active: answer === item.value,
         })}>
-          <input type="radio" id={item.value} name={`quest-${item.id}`} value={item.value} className={styles['radio']}
-                 onChange={handleAnswerChange} />
+          <input type="radio" id={item.value} name={`quest-${item.id}`} value={item.value}
+                 checked={answer === item.value} className={styles['radio']} onChange={handleAnswerChange} />
           <label htmlFor={item.value}>
             <img src={item.image} alt={item.value} className={classNames('rounded', 'img-fluid', styles['image'])}
                  style={{ objectFit: 'contain' }} />

@@ -17,20 +17,20 @@ export function Application() {
   const currentQuest = useMemo(() => quests[currentStep], [currentStep]);
 
   const handleValidate = () => {
-    if (answer === currentQuest.value) {
-      setCurrentStep((prev) => {
-        const nextStep = prev + 1;
+    setCurrentStep((prev) => {
+      const nextStep = prev + 1;
 
-        if (nextStep > quests.length - 1) {
-          setShowSuccess(true);
+      if (nextStep > quests.length - 1) {
+        setShowSuccess(true);
 
-          return;
-        }
+        return;
+      }
 
-        return prev + 1;
-      });
-      setAnswer(null);
-    } else {
+      return prev + 1;
+    });
+    setAnswer(null);
+
+    if (answer !== currentQuest.value) {
       toast.error('Wrong answer..');
     }
 

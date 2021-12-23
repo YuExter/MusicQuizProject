@@ -5,6 +5,7 @@ import { AppWrapper } from '../components/AppWrapper';
 import { Audio } from '../components/Audio';
 import { List } from '../components/List';
 import { Success } from '../components/Success';
+import { Wasted } from '../components/Wasted';
 import { QUESTS } from '../constants';
 
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -14,6 +15,8 @@ export function Application() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answer, setAnswer] = useState(null);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [wrongAnswers, setWrongAnswers] = useState([]);
+  const [showWasted, setShowWasted] = useState(false);
   const currentQuest = useMemo(() => quests[currentStep], [currentStep]);
 
   const handleValidate = () => {
@@ -21,7 +24,11 @@ export function Application() {
       const nextStep = prev + 1;
 
       if (nextStep > quests.length - 1) {
-        setShowSuccess(true);
+        if (!wrongAnswers.length) {
+          setShowSuccess(true);
+        } else {
+          setShowWasted(true);
+        }
 
         return;
       }
@@ -31,13 +38,19 @@ export function Application() {
     setAnswer(null);
 
     if (answer !== currentQuest.value) {
+      setWrongAnswers((prev) => ([...prev, currentStep]));
       toast.error('Wrong answer..');
     }
-
   };
+
+  console.log('asd', wrongAnswers);
 
   if (showSuccess) {
     return <Success />;
+  }
+
+  if (showWasted) {
+    return <Wasted wrongAnswers={wrongAnswers} />;
   }
 
   return (
